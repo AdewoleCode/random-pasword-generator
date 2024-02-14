@@ -1,0 +1,65 @@
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav .nav-child {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    color: #353535;
+}
+
+.nav .nav-child .nav-icon {
+    cursor: pointer;
+    transition: 0.2s all ease-in;
+}
+
+.nav .nav-child .nav-icon:hover {
+    transform: scale(1.25);
+}
+.nav .logo-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.main-layout {
+    padding: 2rem 0;
+    /* border: 1px solid black; */
+}
+
+.main-layout .header {
+    margin: 1rem 0 3rem 0;
+}
+
+.section-box {
+    margin: 4rem 0;
+}
+
+.main-layout .component-title {
+    font-size: 1.5rem;
+    font-size: 800;
+    color: #272727;
+}
+
+.main-layout .component-desc {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #4e4d4d;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-size: 700;
+    color: #272727;
+}
+
+.section-desc {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #4e4d4d;
+
+}

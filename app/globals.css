@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.main-container {
+    padding: 2.5rem 0 3rem 0;
+}
+
+.head-text {
+    color: #afafaf;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.main-container .child-main {
+    border: 1px solid red;
+    width: 500px;
+}
+
+.number {
+    font-weight: 600;
+}
+
+.pass-text {
+    color: #b6b6b6;
+    font-weight: 600;
+}
+
+.rounded-check {
+    width: 17px;
+    height: 17px;
+    border-radius: 30px;
+    border: 1px solid #8d8d8d;
+}
+
+.generate-btn {
+    color: black;
+    font-weight: 600;
+}
