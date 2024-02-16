@@ -7,7 +7,6 @@ import { SiSimilarweb } from "react-icons/si";
 import { IoLogoGithub } from "react-icons/io";
 import { UseTheme } from "../../utils/UseTheme"
 
-
 const NavBar = () => {
     const { isDarkMode, setIsDarkMode } = UseTheme()
     return (
