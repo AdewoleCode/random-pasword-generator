@@ -14,7 +14,7 @@ const NavBar = () => {
         <header
             className='w-full sticky top-0 z-50 border-b bg-[#fff9e1] dark:bg-zinc-900 dark:border-zinc-700'
         >
-            <div className='flex h-16 item-center px-10 sm:px-16 lg:px-40'>
+            <div className='flex h-14 item-center px-10 sm:px-16 lg:px-40'>
                 <div className="nav flex justify-between">
                     <h2 className='logo-name font-bold text-black-600 dark:text-white'>
                         <a href="/">

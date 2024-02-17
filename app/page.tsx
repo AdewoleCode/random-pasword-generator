@@ -11,15 +11,16 @@ import generator from "generate-password"
 
 export default function Home() {
 
-  const [passwordLength, setPasswordLength] = useState(10)
+  const [passwordLength, setPasswordLength] = useState(20)
   const [numbers, setNumbers] = useState(false)
   const [uppercase, setUppercase] = useState(true)
   const [lowercase, setLowercase] = useState(false)
   const [symbols, setSymbols] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
   const [currentPassword, setCurrentPassword] = useState<any>('P4$5w0rD!')
+  // const [currentPasswordValue, setCurrentPasswordValue] = useState('Medium')
 
-  console.log(passwordStrength("asdfasdf").value);
+
 
 
   const generatePassword = () => {
@@ -39,6 +40,12 @@ export default function Home() {
     setCurrentPassword(password)
   }
 
+  const passwordValue = passwordStrength(currentPassword).value
+  console.log(passwordValue);
+
+  // setCurrentPasswordValue(passwordValue)
+
+
   const handleCopy = () => {
     navigator.clipboard.writeText(currentPassword)
     setIsCopied(true)
@@ -51,24 +58,23 @@ export default function Home() {
     }, 3000)
   }
 
-  const iconStyle = `min-h-6 min-w-6 cursor-pointer hover:text-blue-500`
-  const iconActive = `min-h-6 min-w-6 text-blue-500 cursor-pointer`
+  const iconStyle = `min-h-7 min-w-7 cursor-pointer hover:text-blue-500`
+  const iconActive = `min-h-7 min-w-7 text-blue-500 cursor-pointer`
 
-  // setCurrentPassword(password)
   return (
     <>
       <NavBar />
-      <main className="main-container bg-stone-700 h-[650px] w-full text-white flex item-center justify-center">
+      <main className="main-container bg-stone-700 min-h-[650px] w-full text-white flex item-center justify-center">
         <div className="child-main">
-          <p className="head-text text-center mb-3">Password Generator</p>
+          <p className="head-text text-center mb-5">Password Generator</p>
 
           <div className="copy-input bg-zinc-900 flex justify-between items-center align-center gap-7 p-2">
-            <p className="text-2xl bg-zinc-900 text-white-500 overflow-x-auto">{currentPassword}</p>
+            <p className="text-3xl bg-zinc-900 text-white-500 overflow-x-auto font-bold">{currentPassword}</p>
             <div className="flex flex-col items-center justify-center gap-1">
               {
                 isCopied &&
                 <h1
-                  className="text-white text-xs text-blue-500 font-bold"
+                  className=" text-xs text-blue-500 font-bold"
                 >
                   COPIED
                 </h1>
@@ -82,8 +88,10 @@ export default function Home() {
 
           <div className="password-selector bg-zinc-900 mt-4 px-4 py-3">
             <div className="char-lenght flex justify-between items-center">
-              <p>character length</p>
-              <h3 className="number text-[33px] text-blue-600 mt-2">{passwordLength}</h3>
+              <p className="text-[25px] font-bold">Character Length</p>
+              <h3 className="number text-[42px] text-blue-500 mt-2 font-bold">
+                {passwordLength}
+              </h3>
             </div>
 
             <div className="char-slider">
@@ -120,22 +128,43 @@ export default function Home() {
               />
             </div>
 
-            <div className="password-strength flex justify-between align-center mt-5 mb-5 bg-zinc-700 p-3 rounded-sm">
-              <p className="pass-text text-[15px]">STRENGTH</p>
+            <div className="password-strength flex justify-between align-center items-center mt-5 mb-5 bg-zinc-700 p-3 rounded-sm">
+              <p className="pass-text text-[16px] text-[#b6b6b6]">STRENGTH</p>
               <div className="flex gap-2 items-center">
-                <p className="pass-text text-[15px]">STRONG</p>
+                <p className="pass-text text-[19px] font-bold">{passwordValue}</p>
                 <div className="flex gap-2 ">
-                  <PasswordStrength type='Medium' />
-                  <PasswordStrength type='Medium' />
-                  <PasswordStrength type='Medium' />
-                  <PasswordStrength type='Medium' />
+                  <PasswordStrength
+                    type={passwordValue == 'Too weak' ? 'Too Weak' :
+                      passwordValue == 'Weak' ? 'Weak' :
+                        passwordValue == 'Medium' ? 'Medium' :
+                          passwordValue == 'Strong' ? 'Strong' : null}
+                  />
+                  <PasswordStrength
+                    type={passwordValue == 'Too weak' ? null :
+                      passwordValue == 'Weak' ? 'Weak' :
+                        passwordValue == 'Medium' ? 'Medium' :
+                          passwordValue == 'Strong' ? 'Strong' : null}
+                  />
+                  <PasswordStrength
+                    type={passwordValue == 'Too weak' ? null :
+                      passwordValue == 'Weak' ? null :
+                        passwordValue == 'Medium' ? 'Medium' :
+                          passwordValue == 'Strong' ? 'Strong' : null}
+                  />
+                  <PasswordStrength
+                    type={passwordValue == 'Too weak' ? null :
+                      passwordValue == 'Weak' ? null :
+                        passwordValue == 'Medium' ? null :
+                          passwordValue == 'Strong' ? 'Strong' : null}
+                  />
                 </div>
               </div>
             </div>
 
             <button
               onClick={generatePassword}
-              className="generate-btn text-[16px] border border-transparent bg-blue-500 w-full text-center py-2 flex items-center gap-1 justify-center transition-all hover:bg-transparent hover:border-blue-900 hover:text-blue-500">
+              className="generate-btn text-[20px] font-bold border border-transparent bg-blue-500 w-full text-center py-3 flex items-center gap-1 justify-center transition-all hover:bg-transparent hover:border-blue-900 hover:text-blue-500"
+            >
               GENERATE
               <MdArrowForwardIos size={15} />
             </button>
@@ -173,12 +202,13 @@ function CheckComponent({ isChecked, text, onClick }:
   )
 }
 
-function PasswordStrength({ type }: { type: 'Too Weak' | 'Weak' | 'Medium' | 'Strong' }) {
+function PasswordStrength({ type }: { type: 'Too Weak' | 'Weak' | 'Medium' | 'Strong' | null }) {
 
-  const tooWeak = `rounded-check bg-red-600`
+  const tooWeak = `rounded-check bg-red-500`
   const weak = `rounded-check bg-orange-700`
   const medium = `rounded-check bg-orange-400`
   const strong = `rounded-check bg-green-500`
+  const defaultStyle = `rounded-check bg-transparent`
 
   return (
     <div
@@ -186,7 +216,8 @@ function PasswordStrength({ type }: { type: 'Too Weak' | 'Weak' | 'Medium' | 'St
         type == 'Too Weak' ? tooWeak :
           type == 'Weak' ? weak :
             type == 'Medium' ? medium :
-              strong
+              type == 'Strong' ? strong :
+                defaultStyle
       }
     >
     </div>

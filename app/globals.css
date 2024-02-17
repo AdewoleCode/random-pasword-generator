@@ -9,13 +9,13 @@
 
 .head-text {
     color: #afafaf;
-    font-size: 21px;
-    font-weight: 600;
+    font-size: 29px;
+    font-weight: 700;
 }
 
 .main-container .child-main {
-    border: 1px solid red;
-    width: 500px;
+    width: 550px;
+    padding: 0.5rem 0.2rem 1rem 0.2rem;
 }
 
 .number {
@@ -23,19 +23,19 @@
 }
 
 .pass-text {
-    color: #b6b6b6;
     font-weight: 600;
 }
 
 .rounded-check {
-    width: 17px;
-    height: 17px;
+    width: 28px;
+    height: 28px;
     border-radius: 30px;
-    border: 1px solid #8d8d8d;
+    border: 1px solid #fff;
+    color: #fff;
 }
 
 .generate-btn {
-    color: black;
+    color: #fff;
     font-weight: 600;
 }
 
