@@ -16,17 +16,45 @@ export default function Home() {
   const [uppercase, setUppercase] = useState(true)
   const [lowercase, setLowercase] = useState(false)
   const [symbols, setSymbols] = useState(false)
+  const [isCopied, setIsCopied] = useState(false)
+  const [currentPassword, setCurrentPassword] = useState<any>('P4$5w0rD!')
 
   console.log(passwordStrength("asdfasdf").value);
 
-  const password = generator.generate({
-    length: passwordLength,
-    numbers: numbers,
-    uppercase: uppercase,
-    lowercase: lowercase,
-    symbols: symbols
-  })
 
+  const generatePassword = () => {
+    const password = !numbers && !uppercase && !lowercase && !symbols
+      ?
+      <h2 className="text-red-500 text-[17px] font-bold">
+        check atleast one box to generate password!
+      </h2>
+      :
+      generator.generate({
+        length: passwordLength,
+        numbers: numbers,
+        uppercase: uppercase,
+        lowercase: lowercase,
+        symbols: symbols
+      })
+    setCurrentPassword(password)
+  }
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(currentPassword)
+    setIsCopied(true)
+    timedMsg()
+  }
+
+  const timedMsg = () => {
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 3000)
+  }
+
+  const iconStyle = `min-h-6 min-w-6 cursor-pointer hover:text-blue-500`
+  const iconActive = `min-h-6 min-w-6 text-blue-500 cursor-pointer`
+
+  // setCurrentPassword(password)
   return (
     <>
       <NavBar />
@@ -34,10 +62,22 @@ export default function Home() {
         <div className="child-main">
           <p className="head-text text-center mb-3">Password Generator</p>
 
-          <div className="copy-input bg-zinc-900 flex justify-between items-center align-center p-2">
-            {/* <input className="bg-zinc-900 text-white-500" type="text" value="" placeholder="P4$SW0&D!" disabled /> */}
-            <p className="bg-zinc-900 text-white-500">{password}</p>
-            <FaRegCopy className="cursor-pointer hover:text-blue-500" />
+          <div className="copy-input bg-zinc-900 flex justify-between items-center align-center gap-7 p-2">
+            <p className="text-2xl bg-zinc-900 text-white-500 overflow-x-auto">{currentPassword}</p>
+            <div className="flex flex-col items-center justify-center gap-1">
+              {
+                isCopied &&
+                <h1
+                  className="text-white text-xs text-blue-500 font-bold"
+                >
+                  COPIED
+                </h1>
+              }
+              <FaRegCopy
+                onClick={handleCopy}
+                className={isCopied ? iconActive : iconStyle}
+              />
+            </div>
           </div>
 
           <div className="password-selector bg-zinc-900 mt-4 px-4 py-3">
@@ -93,7 +133,9 @@ export default function Home() {
               </div>
             </div>
 
-            <button className="generate-btn text-[16px] border border-transparent bg-blue-500 w-full text-center py-2 flex items-center gap-1 justify-center transition-all hover:bg-transparent hover:border-blue-900 hover:text-blue-500">
+            <button
+              onClick={generatePassword}
+              className="generate-btn text-[16px] border border-transparent bg-blue-500 w-full text-center py-2 flex items-center gap-1 justify-center transition-all hover:bg-transparent hover:border-blue-900 hover:text-blue-500">
               GENERATE
               <MdArrowForwardIos size={15} />
             </button>
@@ -114,16 +156,14 @@ function CheckComponent({ isChecked, text, onClick }:
   }
 ) {
 
-  const CheckedClass = `h-5 w-5 border border-zinc-900 flex items-center justify-center w-fit p-1 cursor-pointer bg-blue-500`
-  const NotCheckedClass = `h-5 w-5 border border-white flex items-center justify-center w-fit p-1 cursor-pointer bg-transparent hover:border-blue-500`
-
   return (
-    <div className="flex gap-3">
+    <div className="flex items-center gap-3">
       <button
         onClick={onClick}
-        className={isChecked ? CheckedClass : NotCheckedClass}>
+        className={isChecked ? 'checked-class' : 'not-checked-class'}
+      >
         {
-          isChecked && <IoCheckmarkDoneSharp className="text-xs text-zinc-800" />
+          isChecked && <IoCheckmarkDoneSharp className="check text-xs text-white-800" />
         }
       </button>
       <p className="text-sm font-bold text-gray-300">
