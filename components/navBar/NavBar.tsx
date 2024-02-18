@@ -7,16 +7,13 @@ import { SiSimilarweb } from "react-icons/si";
 import { IoLogoGithub } from "react-icons/io";
 import { UseTheme } from "../../utils/UseTheme"
 
-
 const NavBar = () => {
     const { isDarkMode, setIsDarkMode } = UseTheme()
     return (
-        <header
-            className='w-full sticky top-0 z-50 border-b bg-[#fff9e1] dark:bg-zinc-900 dark:border-zinc-700'
-        >
+        <header className='w-full sticky top-0 z-50 border-b bg-zinc-900  dark:bg-[#fff9e1] dark:border-zinc-700'>
             <div className='flex h-14 item-center px-10 sm:px-16 lg:px-40'>
                 <div className="nav flex justify-between">
-                    <h2 className='logo-name font-bold text-black-600 dark:text-white'>
+                    <h2 className='logo-name font-bold text-[#fff9e1] dark:text-zinc-900'>
                         <a href="/">
                             Adewole.
                         </a>
@@ -27,16 +24,15 @@ const NavBar = () => {
                         >
                             {
                                 isDarkMode ?
-                                    <IoSunny className='nav-icon w-[35px] h-[35px] dark:text-white' />
-                                    : <IoMoon className='nav-icon w-[30px] h-[30px] dark:text-white' />
-
+                                    <IoSunny className='nav-icon w-[35px] h-[35px] dark:text-zinc-900' />
+                                    : <IoMoon className='nav-icon w-[30px] h-[30px] dark:text-zinc-900' />
                             }
                         </span>
-                        <a href="">
-                            <SiSimilarweb className='nav-icon w-[24px] h-[24px] dark:text-white' />
+                        <a href="https://adewole-3d-portfolio.onrender.com/">
+                            <SiSimilarweb className='nav-icon w-[24px] h-[24px] dark:text-zinc-900' />
                         </a>
-                        <a href="">
-                            <IoLogoGithub className='nav-icon w-[29px] h-[29px] dark:text-white' />
+                        <a href="https://github.com/AdewoleCode">
+                            <IoLogoGithub className='nav-icon w-[29px] h-[29px] dark:text-zinc-900' />
                         </a>
                     </div>
                 </div>

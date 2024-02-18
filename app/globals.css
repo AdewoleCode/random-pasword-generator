@@ -35,7 +35,7 @@
 }
 
 .generate-btn {
-    color: #fff;
+    color: #fff9e1;
     font-weight: 600;
 }
 
@@ -52,13 +52,13 @@
 }
 
 .not-checked-class {
-    width: 30px;
+    /* width: 30px;
     height: 30px;
     border: 1px solid #fff;
     display: flex;
     justify-content: center;
     cursor: pointer;
-    background: transparent;
+    background: transparent; */
     transition: 0.2s all ease-in;
     padding: 0.3rem;
 }
@@ -72,3 +72,31 @@
     height: 100%;
     color: #fff;
 }
+
+
+.passCur {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+/* 
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #147fe4;
+    height: 0.8rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -5px;
+    background: #fff;
+    height: 1.4rem;
+    width: 0.9rem;
+    border-radius: 25px;
+} */
